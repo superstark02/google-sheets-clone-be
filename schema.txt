@@ -1,0 +1,4 @@
+color: string
+bold: boolena
+data: string
+id: int
