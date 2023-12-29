@@ -33,7 +33,7 @@ func GetAllData() []Data {
 	response := []Data{}
 	for results.Next() {
 		var data Data
-		err = results.Scan(&data.ID, &data.Bold, &data.Data, &data.Color)
+		err = results.Scan(&data.Id, &data.Color, &data.Data, &data.Bold, &data.Y, &data.X)
 
 		if err != nil {
 			panic(err.Error())
@@ -63,7 +63,7 @@ func GetDataByRange() []Data {
 	response := []Data{}
 	for results.Next() {
 		var data Data
-		err = results.Scan(&data.ID, &data.Bold, &data.Data, &data.Color)
+		err = results.Scan(&data.Id, &data.Bold, &data.Data, &data.Color)
 
 		if err != nil {
 			panic(err.Error())
@@ -93,7 +93,7 @@ func GetDataById(id string) []Data {
 	response := []Data{}
 	for results.Next() {
 		var data Data
-		err = results.Scan(&data.ID, &data.Bold, &data.Data, &data.Color)
+		err = results.Scan(&data.Id, &data.Bold, &data.Data, &data.Color)
 
 		if err != nil {
 			panic(err.Error())
@@ -118,7 +118,7 @@ func CreateData(data Data) {
 	defer db.Close()
 	insert, err := db.Query(
 		"INSERT INTO sheet_data (id,data,bold,color) VALUES (?,?,?,?)",
-		data.ID, data.Data, data.Bold, data.Color)
+		data.Id, data.Data, data.Bold, data.Color)
 
 	if err != nil {
 		fmt.Println("Err", err.Error())

@@ -1,6 +1,7 @@
 const generateId = (n, m) => {
   //Cantor pairing
   return ((n + m) * (n + m + 1)) / 2 + m;
+  // ((-m)*2)/((n+m)*n+m+1)
 };
 
 function main() {
